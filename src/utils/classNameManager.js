@@ -1,4 +1,6 @@
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
-export const cN = (...classNames) => twMerge(clsx(classNames));
+const cN = (...classNames) => twMerge(clsx(classNames));
+
+export default cN;

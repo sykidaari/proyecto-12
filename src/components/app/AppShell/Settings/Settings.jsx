@@ -1,5 +1,5 @@
 import { Fragment } from 'react/jsx-runtime';
-import { useText } from '@/hooks/useText';
+import useText from '@/hooks/useText';
 import LanguageSetting from '@c/app/AppShell/Settings/LanguageSetting/LanguageSetting';
 import ThemeSetting from '@c/app/AppShell/Settings/ThemeSetting/ThemeSetting';
 

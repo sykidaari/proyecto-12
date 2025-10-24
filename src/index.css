@@ -9,3 +9,7 @@
   /* Remove Tailwind palette, as using DaisyUI palette */
   --color-*: initial;
 }
+
+.app-pet-name {
+  @apply font-semibold capitalize;
+}

@@ -1,40 +1,35 @@
-import { useText } from '@/hooks/useText';
+import useGameContext from '@/hooks/useGameContext.js';
+import useText from '@/hooks/useText';
+import StartButtons from '@c/game/StartButtons/StartButtons.jsx';
 
 const Home = () => {
   const t = useText('app.home');
+  const {
+    state: { petSkin }
+  } = useGameContext();
 
-  const { title, description, startNew, continueCurrent, createdBy } = t;
+  const { title, description, createdBy } = t;
 
   return (
-    <section className='card sm:card-xl items-center overflow-hidden m-5'>
+    <section className='card sm:card-xl items-center p-5 overflow-hidden'>
       <img
-        //! SRC IS PLACEHOLDER
-        src='/public/petSprites/Tamagotchi_iD_L/close_up.gif'
+        src={`/public/petSprites/${petSkin}/close_up.gif`}
         alt='pet'
         className='w-25 h-25 object-center object-contain'
       />
 
       <div className='card-body text-center items-center px-0'>
         <h3 className='card-title'>{title} ReactGotchi</h3>
-        <h4>{description}</h4>
-        <div className='card-actions mt-3 *:btn-block *:rounded-full'>
-          <button className='btn bg-secondary text-secondary-content'>
-            {startNew}
-          </button>
-          <button className='btn bg-accent text-accent-content'>
-            {continueCurrent} PLACEHOLDER
-          </button>
+        <h4 className='px-2.5'>{description}</h4>
 
-          <aside className='mt-2.5 text-xs  text-accent'>
-            {createdBy}{' '}
-            <a
-              href='https://github.com/sykidaari'
-              className='link footer-title'
-            >
-              Kira
-            </a>
-          </aside>
-        </div>
+        <StartButtons />
+
+        <aside className='mt-2.5 text-xs  text-accent'>
+          {createdBy}{' '}
+          <a href='https://github.com/sykidaari' className='link footer-title'>
+            Kira
+          </a>
+        </aside>
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import { useAppContext } from '@/hooks/useAppContext';
+import useAppContext from '@/hooks/useAppContext';
 import { setMobileNavDrawer, setSettingsDrawer } from '@/reducers/app/actions';
 import Header from '@c/app/AppShell/Header/Header';
 import NavLinks from '@c/app/AppShell/NavLinks/NavLinks';

@@ -1,4 +1,4 @@
-import { scrape } from '../petSpriteScraper/scraper.js';
+import scrape from '../petSpriteScraper/scraper.js';
 
 // used options:
 // Mametchi

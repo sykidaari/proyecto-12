@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Bars3Icon, Cog6ToothIcon } from '@heroicons/react/24/solid';
 import NavLinks from '@c/app/AppShell/NavLinks/NavLinks';
-import { cN } from '@/utils/classNameManager';
-import { useAppContext } from '@/hooks/useAppContext';
+import cN from '@/utils/classNameManager';
+import useAppContext from '@/hooks/useAppContext';
 
 const Header = () => {
   const { state } = useAppContext();

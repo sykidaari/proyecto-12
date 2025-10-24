@@ -1,4 +1,8 @@
 import AppContext from '@/providers/App/AppContext';
-import { useContext } from 'react';
+import { use } from 'react';
 
-export const useAppContext = () => useContext(AppContext);
+const useAppContext = () => use(AppContext);
+
+//USE: HOOK NUEVO DE REACT 19 QUE REEMPLAZA A USECONTEXT (entre otras funcionalidades)
+
+export default useAppContext;

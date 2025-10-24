@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 import wantedSprites from '../../../src/data/petSprites.js';
 import { Buffer } from 'buffer';
 
-export const scrape = async (url) => {
+const scrape = async (url) => {
   // * CREATE/GET sprites folder in public of parentproject
 
   console.log(`folder created in /public in parent project
@@ -141,3 +141,5 @@ export const scrape = async (url) => {
   // eslint-disable-next-line
   process.exit();
 };
+
+export default scrape;

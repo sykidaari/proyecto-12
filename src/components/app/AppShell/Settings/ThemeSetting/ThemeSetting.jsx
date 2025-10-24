@@ -1,4 +1,4 @@
-import { useAppContext } from '@/hooks/useAppContext';
+import useAppContext from '@/hooks/useAppContext';
 import { setAppTheme } from '@/reducers/app/actions';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
 

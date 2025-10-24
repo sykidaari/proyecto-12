@@ -6,34 +6,32 @@ export const INITIAL_APP_STATE = {
   language: localStorage.getItem('language') || 'en'
 };
 
-export function appReducer(state, action) {
-  switch (action.type) {
-    case 'SET_MOBILE_NAV_OPEN': {
-      const isOpen = action.payload;
+const appReducer = (state, action) => {
+  const { type, payload } = action;
 
-      return { ...state, mobileNavOpen: isOpen };
+  switch (type) {
+    case 'SET_MOBILE_NAV_OPEN': {
+      return { ...state, mobileNavOpen: payload };
     }
 
     case 'SET_SETTINGS_OPEN': {
-      const isOpen = action.payload;
-
-      return { ...state, settingsOpen: isOpen };
+      return { ...state, settingsOpen: payload };
     }
 
     case 'SET_THEME': {
-      const newTheme = action.payload;
-      localStorage.setItem('theme', newTheme);
-      document.documentElement.setAttribute('data-theme', newTheme);
-      return { ...state, theme: newTheme };
+      localStorage.setItem('theme', payload);
+      document.documentElement.setAttribute('data-theme', payload);
+      return { ...state, theme: payload };
     }
 
     case 'SET_LANGUAGE': {
-      const newLang = action.payload;
-      localStorage.setItem('language', newLang);
-      return { ...state, language: newLang };
+      localStorage.setItem('language', payload);
+      return { ...state, language: payload };
     }
 
     default:
       return state;
   }
-}
+};
+
+export default appReducer;

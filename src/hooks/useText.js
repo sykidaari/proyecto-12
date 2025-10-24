@@ -1,5 +1,5 @@
 import TEXTS from '@/data/texts';
-import { useAppContext } from '@/hooks/useAppContext';
+import useAppContext from '@/hooks/useAppContext';
 
 // * 1st version
 // export const useText = () => {
@@ -8,7 +8,7 @@ import { useAppContext } from '@/hooks/useAppContext';
 //   return TEXTS[state.language];
 // };
 
-export const useText = (path) => {
+const useText = (path) => {
   const {
     state: { language: currentLanguage }
   } = useAppContext();
@@ -27,3 +27,5 @@ export const useText = (path) => {
 
   return value ?? path;
 };
+
+export default useText;

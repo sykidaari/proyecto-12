@@ -1,7 +1,7 @@
 import allLanguages from '@/data/texts';
-import { useText } from '@/hooks/useText';
-import { cN } from '@/utils/classNameManager';
-import { useAppContext } from '@/hooks/useAppContext';
+import useText from '@/hooks/useText';
+import cN from '@/utils/classNameManager';
+import useAppContext from '@/hooks/useAppContext';
 import { setLanguage } from '@/reducers/app/actions';
 
 const LanguageSetting = () => {

@@ -20,6 +20,13 @@ const TEXTS = {
         continueCurrent: 'Continue with',
         createdBy: 'Created by'
       }
+    },
+    game: {
+      resetModal: {
+        title: ['Say goodbye to', 'and start a new game?'],
+        yes: 'Yes',
+        no: 'No'
+      }
     }
   },
   es: {
