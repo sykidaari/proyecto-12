@@ -5,15 +5,23 @@ export const INITIAL_GAME_STATE = {
   background: 8,
 
   ownedSkins: ['Tamagotchi_iD_L'],
-  ownedBackgrounds: ['close_up.gif'],
+  ownedBackgrounds: [8],
+  ownedFoods: { kibble: 5, fruit: 2, candy: 1 },
 
-  sprite: 'neutral.webp',
+  sprite: 'neutral',
 
-  hunger: 50,
-  sleep: 50,
-  fun: 50,
+  coins: 10,
 
-  happinness: 50
+  isAwake: true,
+  isPlaying: false,
+
+  stats: {
+    hunger: 50,
+    sleep: 50,
+    fun: 50,
+
+    happiness: 50
+  }
 };
 
 const gameReducer = (state, action) => {
@@ -45,8 +53,54 @@ const gameReducer = (state, action) => {
         ownedBackgrounds: [...state.ownedBackgrounds, payload]
       };
     }
+
+    case 'CHANGE_OWNED_FOODS': {
+      const { food, amount } = action.payload;
+
+      return {
+        ...state,
+        ownedFoods: {
+          ...state.ownedFoods,
+          [food]: state.ownedFoods[food] + amount
+        }
+      };
+    }
+
     case 'SET_SPRITE': {
       return { ...state, sprite: payload };
+    }
+
+    case 'SET_IS_AWAKE': {
+      return { ...state, isAwake: payload };
+    }
+
+    case 'SET_IS_PLAYING': {
+      return { ...state, isPlaying: payload };
+    }
+
+    case 'CHANGE_COINS': {
+      return {
+        ...state,
+        coins: Math.min(1000, Math.max(0, state.coins + payload))
+      };
+    }
+
+    case 'CHANGE_STATS': {
+      const newState = {
+        ...state,
+        stats: Object.fromEntries(
+          Object.entries(state.stats).map(([key, value]) => [
+            key,
+            Math.min(100, Math.max(0, value + (payload[key] ?? 0)))
+          ])
+        )
+      };
+
+      const { fun, hunger, sleep } = newState.stats;
+      const base = (fun + hunger + sleep) / 3;
+      newState.stats.happiness = Math.max(0, Math.min(base, 100));
+
+      return newState;
     }
 
     default:

@@ -1,3 +1,5 @@
+// ! FILE NO LONGER USED, WAS FOR SCRAPER
+
 const petSprites = [
   'neutral',
   'happy',

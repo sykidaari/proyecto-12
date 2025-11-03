@@ -1,0 +1,13 @@
+@keyframes tiny-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1px);
+  }
+}
+
+[data-pet-skin-css='true'] {
+  animation: tiny-bounce 1.2s ease-in-out infinite;
+}

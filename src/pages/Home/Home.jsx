@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <section className='card sm:card-xl items-center p-5 overflow-hidden'>
       <img
-        src={`/public/petSprites/${petSkin}/close_up.gif`}
+        src={`/petSprites/${petSkin}/close_up.gif`}
         alt='pet'
         className='w-25 h-25 object-center object-contain'
       />

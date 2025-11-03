@@ -26,9 +26,22 @@ const TEXTS = {
         title: ['Say goodbye to', 'and start a new game?'],
         yes: 'Yes',
         no: 'No'
+      },
+      stats: {
+        hunger: 'Hunger',
+        sleep: 'Sleep',
+        fun: 'Fun',
+        happiness: 'Happiness'
+      },
+      actions: {
+        feed: { title: 'Feed', noneLeft: "There's no food left!" },
+        play: 'Play',
+        sleep: 'Sleep',
+        wakeUp: 'Wake Up'
       }
     }
   },
+
   es: {
     app: {
       nav: {
@@ -56,6 +69,7 @@ const TEXTS = {
       }
     }
   },
+
   fi: {
     app: {
       nav: {
@@ -71,7 +85,7 @@ const TEXTS = {
         }
       },
       home: {
-        title: 'Tervetuloa',
+        title: 'Tervetuloa peliin',
         description: 'Huolehdi kamustasi ja pidä se onnellisena!',
         startNew: 'Aloita uusi peli',
         continueCurrent: 'Jatka hahmolla',
@@ -79,6 +93,7 @@ const TEXTS = {
       }
     }
   },
+
   se: {
     app: {
       nav: {
