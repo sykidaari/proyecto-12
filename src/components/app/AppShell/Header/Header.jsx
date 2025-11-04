@@ -28,7 +28,7 @@ const Header = () => {
           <h1> ReactGotchi</h1>
         </Link>
 
-        <NavLinks className='hidden navbar-center sm:menu-horizontal' />
+        <NavLinks className='hidden navbar-center sm:menu-horizontal sm:inline-flex' />
         <div className='navbar-end'>
           <label
             htmlFor='settings-drawer'
