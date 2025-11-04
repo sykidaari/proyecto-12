@@ -2,18 +2,20 @@ import existingFoods from '@/data/foods.js';
 
 export const resetGame = (dispatch) => dispatch({ type: 'RESET_GAME' });
 
-export const gameLoop = (dispatch, state) => {
+export const gameLoop = (dispatch, state, appState) => {
   const { isAwake, isPlaying, stats, sprite } = state;
   const { happiness } = stats;
 
-  // LOOP PAUSED WHEN SLEEPING
-  if (!isAwake || isPlaying) return;
+  const { mobileNavOpen, settingsOpen } = appState;
+
+  // LOOP PAUSED WHEN SLEEPING, PLAYING OR A MENU IS OPEN
+  if (!isAwake || isPlaying || mobileNavOpen || settingsOpen) return;
 
   const interval = setInterval(() => {
     // CONSTANT STATS DECAY
     dispatch({
       type: 'CHANGE_STATS',
-      payload: { hunger: -0.5, fun: -0.3, sleep: -0.1 }
+      payload: { hunger: -0.5, fun: -0.3, sleep: -0.2 }
     });
 
     // SPRITE DEPENDS ON STATS (EXCEPT WHEN SLEEPING, PLAYING OR EATING)

@@ -1,7 +1,7 @@
 const TEXTS = {
   en: {
     app: {
-      nav: { home: 'Home', guide: 'Guide', pet: 'My Pet' },
+      nav: { home: 'Home', guide: 'Guide', pet: 'My Pet', store: 'Store' },
       settings: {
         title: 'Settings',
         options: {
@@ -22,6 +22,7 @@ const TEXTS = {
       }
     },
     game: {
+      namePet: { title: 'Name your pet:', submit: 'Confirm' },
       resetModal: {
         title: ['Say goodbye to', 'and start a new game?'],
         yes: 'Yes',
@@ -38,6 +39,11 @@ const TEXTS = {
         play: 'Play',
         sleep: 'Sleep',
         wakeUp: 'Wake Up'
+      },
+      store: {
+        food: { title: 'Food' },
+        skins: { title: 'Appereances' },
+        backgrounds: { title: 'Wallpapers' }
       }
     }
   },
@@ -66,6 +72,14 @@ const TEXTS = {
         startNew: 'Comenzar nueva partida',
         continueCurrent: 'Continuar con',
         createdBy: 'Creado por'
+      }
+    },
+    game: {
+      actions: {
+        feed: { title: 'Alimentar', noneLeft: '¡No queda comida!' },
+        play: 'Jugar',
+        sleep: 'Dormir',
+        wakeUp: 'Despertar'
       }
     }
   },

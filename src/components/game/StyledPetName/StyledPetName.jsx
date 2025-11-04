@@ -8,7 +8,7 @@ const StyledPetName = ({ bolder }) => {
   } = useGameContext();
 
   return (
-    <span className={cN('font-semibold capitalize', bolder && 'font-bold')}>
+    <span className={cN('font-semibold', bolder && 'font-bold')}>
       {petName}
     </span>
   );

@@ -1,6 +1,7 @@
 import useGameContext from '@/hooks/useGameContext.js';
 import useText from '@/hooks/useText.js';
 import cN from '@/utils/classNameManager.js';
+import { memo } from 'react';
 
 const Stats = () => {
   const t = useText('game.stats');
@@ -41,4 +42,4 @@ const Stats = () => {
   );
 };
 
-export default Stats;
+export default memo(Stats);

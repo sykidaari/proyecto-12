@@ -2,6 +2,7 @@ import useGameContext from '@/hooks/useGameContext.js';
 import useText from '@/hooks/useText.js';
 import { play } from '@/reducers/game/actions.js';
 import cN from '@/utils/classNameManager.js';
+import { memo } from 'react';
 
 const Play = ({ buttonClassName }) => {
   const t = useText('game.actions.play');
@@ -26,4 +27,4 @@ const Play = ({ buttonClassName }) => {
   );
 };
 
-export default Play;
+export default memo(Play);

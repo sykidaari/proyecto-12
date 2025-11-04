@@ -6,15 +6,20 @@ import Actions from '@c/game/GameSession/Actions/Actions.jsx';
 import { useEffect } from 'react';
 import useGameContext from '@/hooks/useGameContext.js';
 import { gameLoop } from '@/reducers/game/actions.js';
+import useAppContext from '@/hooks/useAppContext.js';
 
 const GameSession = () => {
+  // ALL CHILDREN OF GAMESESSION ALL ARE MEMOED SO THEY REMAIN UNAFFECTED BY APPSTATE, AS APPSTATE IS ONLY USED IN REDUCER ACTION (GAMELOOP)
+
+  const { state: appState } = useAppContext();
+
   const { state, dispatch } = useGameContext();
 
   useEffect(() => {
-    const stop = gameLoop(dispatch, state);
+    const stop = gameLoop(dispatch, state, appState);
 
     return stop;
-  }, [dispatch, state]);
+  }, [dispatch, state, appState]);
 
   return (
     <section className='card items-center shadow shadow-accent mx-5 max-w-sm h-fit'>

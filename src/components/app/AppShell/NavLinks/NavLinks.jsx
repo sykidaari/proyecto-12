@@ -12,7 +12,10 @@ const NavLinks = ({ className }) => {
   const {
     state: { petName }
   } = useGameContext();
-  const { dispatch } = useAppContext();
+  const {
+    state: { settingsOpen },
+    dispatch
+  } = useAppContext();
   const petRoute = usePetRoute();
 
   const handleClick = () => {
@@ -25,7 +28,7 @@ const NavLinks = ({ className }) => {
         const isPet = petName && key === petRoute;
 
         return (
-          <li key={key}>
+          <li key={key} className={cN(settingsOpen && 'menu-disabled')}>
             <NavLink
               to={key}
               className={({ isActive }) => cN(isActive && 'menu-active')}

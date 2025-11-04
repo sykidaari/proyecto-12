@@ -2,6 +2,7 @@ import backgroundPositions from '@/data/backgroundPositions.js';
 import useGameContext from '@/hooks/useGameContext.js';
 import './PetVisual.css';
 import cN from '@/utils/classNameManager.js';
+import { memo } from 'react';
 
 const PetVisual = () => {
   const {
@@ -11,9 +12,9 @@ const PetVisual = () => {
   return (
     <div className='w-full aspect-square relative'>
       <img
-        src={`/public/petRooms/${background}.webp`}
+        src={`/petRooms/${background}.webp`}
         alt='background'
-        className='w-full object-contain blur-[1px] rounded-t-lg'
+        className='w-full object-contain blur-[1px] rounded-t-box'
         data-pet-visual-css
       />
       <img
@@ -33,4 +34,4 @@ const PetVisual = () => {
   );
 };
 
-export default PetVisual;
+export default memo(PetVisual);

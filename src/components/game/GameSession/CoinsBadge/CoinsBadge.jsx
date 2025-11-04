@@ -1,6 +1,6 @@
 import useGameContext from '@/hooks/useGameContext.js';
 import { CircleStackIcon } from '@heroicons/react/24/solid';
-import { useEffect, useRef } from 'react';
+import { memo, useEffect, useRef } from 'react';
 
 const CoinsBadge = () => {
   const {
@@ -35,4 +35,4 @@ const CoinsBadge = () => {
   );
 };
 
-export default CoinsBadge;
+export default memo(CoinsBadge);

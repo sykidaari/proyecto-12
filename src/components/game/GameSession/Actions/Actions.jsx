@@ -1,6 +1,7 @@
 import Feed from '@c/game/GameSession/Actions/Feed/Feed.jsx';
 import Play from '@c/game/GameSession/Actions/Play/Play.jsx';
 import Sleep from '@c/game/GameSession/Actions/Sleep/Sleep.jsx';
+import { memo } from 'react';
 
 const Actions = () => {
   const buttonClassName = 'btn btn-secondary w-full px-0';
@@ -14,4 +15,4 @@ const Actions = () => {
   );
 };
 
-export default Actions;
+export default memo(Actions);

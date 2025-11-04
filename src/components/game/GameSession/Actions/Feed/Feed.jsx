@@ -2,7 +2,7 @@ import useGameContext from '@/hooks/useGameContext.js';
 import useText from '@/hooks/useText.js';
 import { feed } from '@/reducers/game/actions.js';
 import cN from '@/utils/classNameManager.js';
-import React, { useEffect, useRef } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 
 const Feed = ({ buttonClassName }) => {
   const t = useText('game.actions.feed');
@@ -66,4 +66,4 @@ const Feed = ({ buttonClassName }) => {
   );
 };
 
-export default Feed;
+export default memo(Feed);
