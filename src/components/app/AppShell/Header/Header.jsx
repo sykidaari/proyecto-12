@@ -24,12 +24,15 @@ const Header = () => {
           <Bars3Icon className='size-6' />
         </label>
 
-        <Link to={'/home'} className='navbar-start text-md font-semibold '>
+        <Link
+          to={'/home'}
+          className='navbar-start text-md font-semibold max-[210px]:hidden'
+        >
           <h1> ReactGotchi</h1>
         </Link>
 
         <NavLinks className='hidden navbar-center sm:menu-horizontal sm:inline-flex' />
-        <div className='navbar-end'>
+        <div className='navbar-end max-[210px]:absolute max-[210px]:right-1'>
           <label
             htmlFor='settings-drawer'
             aria-label='open sidebar'

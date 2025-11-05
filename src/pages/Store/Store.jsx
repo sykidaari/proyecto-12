@@ -14,13 +14,16 @@ const Store = () => {
   } = t;
 
   return (
-    <div className='h-full overflow-y-auto'>
+    <div className='h-full overflow-y-auto p-5 pb-10'>
+      {' '}
       <StoreSection title={foodTitle} items={foods} src={'/foods/ITEM.svg'} />
+      <div className='divider' />
       <StoreSection
         title={skinsTitle}
         items={petSkins}
         src={'/petSprites/ITEM/neutral.webp'}
       />
+      <div className='divider' />
       <StoreSection
         title={backgroundsTitle}
         items={backgrounds}

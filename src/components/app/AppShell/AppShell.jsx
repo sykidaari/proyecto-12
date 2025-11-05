@@ -15,7 +15,7 @@ const AppShell = ({ children }) => {
 
   return (
     // LEFT DRAWER: MOBILE MENU
-    <div className='h-dvh overflow-hidden drawer'>
+    <div className=' drawer'>
       <input
         id='mobile-nav-drawer'
         type='checkbox'
@@ -25,7 +25,7 @@ const AppShell = ({ children }) => {
       />
       <div className='drawer-content'>
         {/* RIGHT DRAWER: SETTINGS */}
-        <div className='h-dvh overflow-hidden drawer drawer-end'>
+        <div className='drawer drawer-end'>
           <input
             id='settings-drawer'
             type='checkbox'
@@ -33,11 +33,11 @@ const AppShell = ({ children }) => {
             checked={settingsOpen}
             onChange={toggleSettings}
           />
-          <div className='drawer-content h-dvh flex flex-col'>
+          <div className='drawer-content'>
             {/* Header contains labels to open both drawers */}
             <Header />
             {/* PAGE-CONTENT */}
-            <main className='h-full flex justify-center items-center'>
+            <main className='min-h-[calc(100dvh-65px)] flex justify-center items-center'>
               {children}
             </main>
           </div>
@@ -58,7 +58,8 @@ const AppShell = ({ children }) => {
           aria-label='close sidebar'
           className='drawer-overlay'
         />
-        <NavLinks className='sm:hidden bg-base-300 min-h-full pt-25' />
+
+        <NavLinks className='sm:hidden bg-base-300 min-h-full pt-25 w-1/3 min-w-fit' />
       </div>
     </div>
   );

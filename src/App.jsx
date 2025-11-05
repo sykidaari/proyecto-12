@@ -8,7 +8,6 @@ import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 function App() {
   return (
     <div id='app'>
-      {' '}
       <AppShell>
         <Routes>
           <Route element={<Outlet />}>

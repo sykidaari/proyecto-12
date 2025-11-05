@@ -21,7 +21,7 @@ const StartButtons = () => {
   const handleContinueButtonClick = () => navigateToPet();
 
   return (
-    <div className='card-actions mt-3  w-full max-w-xs sm:max-w-full  [&>button]:btn-block [&>button]:rounded-full'>
+    <div className='card-actions mt-3 justify-center w-full max-w-xs sm:max-w-full  [&>button]:btn-block [&>button]:rounded-full'>
       {/* START GAME BUTTON */}
       <button
         className={cN('btn', petName ? 'btn-soft' : 'btn-secondary')}
@@ -36,7 +36,7 @@ const StartButtons = () => {
           {/* CONTINUE GAME BUTTON */}
           <button
             onClick={handleContinueButtonClick}
-            className='btn btn-secondary gap-1'
+            className='btn btn-secondary gap-1 flex-wrap min-h-fit'
           >
             {continueCurrent} <StyledPetName bolder />
           </button>

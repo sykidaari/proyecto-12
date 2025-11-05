@@ -24,6 +24,11 @@ const NavLinks = ({ className }) => {
 
   return (
     <ul className={cN('menu gap-2.5', className)}>
+      {/* title for very small screen */}
+      <li className='hidden text-md font-semibold max-[210px]:block menu-disabled text-primary'>
+        <h1>ReactGotchi</h1>
+      </li>
+
       {Object.entries(t).map(([key, value]) => {
         const isPet = petName && key === petRoute;
 
