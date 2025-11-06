@@ -10,7 +10,7 @@ const PetVisual = () => {
   } = useGameContext();
 
   return (
-    <div className='w-full aspect-square relative'>
+    <div className='w-full aspect-square relative [@media(max-height:750px)]:max-h-[45dvh]'>
       <img
         src={`/petRooms/${background}.webp`}
         alt='background'

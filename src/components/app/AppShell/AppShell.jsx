@@ -15,7 +15,7 @@ const AppShell = ({ children }) => {
 
   return (
     // LEFT DRAWER: MOBILE MENU
-    <div className=' drawer'>
+    <div className=' drawer overflow-x-hidden'>
       <input
         id='mobile-nav-drawer'
         type='checkbox'

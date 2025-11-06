@@ -1,5 +1,4 @@
 import PetVisual from '@c/game/GameSession/PetVisual/PetVisual.jsx';
-import './GameSession.css';
 import CoinsBadge from '@c/game/GameSession/CoinsBadge/CoinsBadge.jsx';
 import Stats from '@c/game/GameSession/Stats/Stats.jsx';
 import Actions from '@c/game/GameSession/Actions/Actions.jsx';
@@ -22,10 +21,13 @@ const GameSession = () => {
   }, [dispatch, state, appState]);
 
   return (
-    <section className='card items-center shadow shadow-accent mx-5 max-w-sm h-fit'>
+    <section className='card items-center shadow shadow-accent m-5 max-w-sm h-fit [@media(max-height:750px)]:my-2.5'>
       <PetVisual />
       <CoinsBadge />
-      <div className='card-body w-full' data-pet-body-css>
+      <div
+        className='card-body w-full max-[350px]:p-4 [@media(max-height:650px)]:py-2'
+        data-pet-body-css
+      >
         <Stats />
         <Actions />
       </div>
