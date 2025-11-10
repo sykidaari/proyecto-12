@@ -1,7 +1,7 @@
 const foods = {
-  kibble: { hungerPoints: 25, coins: 0, funPoints: 0 },
-  fruit: { hungerPoints: 10, coins: 10, funPoints: 5 },
-  candy: { hungerPoints: 5, coins: 20, funPoints: 10 }
+  kibble: { hungerPoints: 25, funPoints: 0, coins: 0 },
+  fruit: { hungerPoints: 10, funPoints: 5, coins: 10 },
+  candy: { hungerPoints: 5, funPoints: 10, coins: 20 }
 };
 
 export default foods;

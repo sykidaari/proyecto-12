@@ -2,16 +2,43 @@ import existingFoods from '@/data/foods.js';
 
 export const resetGame = (dispatch) => dispatch({ type: 'RESET_GAME' });
 
-export const gameLoop = (dispatch, state, appState) => {
-  const { isAwake, isPlaying, stats, sprite } = state;
-  const { happiness } = stats;
+export const revive = (dispatch, state) => {
+  const { ownedFoods } = state;
 
-  const { mobileNavOpen, settingsOpen } = appState;
+  dispatch({ type: 'SET_GAME_OVER', payload: false });
 
-  // LOOP PAUSED WHEN SLEEPING, PLAYING OR A MENU IS OPEN
-  if (!isAwake || isPlaying || mobileNavOpen || settingsOpen) return;
+  dispatch({
+    type: 'CHANGE_STATS',
+    payload: { sleep: 20, hunger: 20, fun: 20 }
+  });
 
+  const noFoodLeft = Object.values(ownedFoods).every((value) => value === 0);
+
+  if (noFoodLeft)
+    dispatch({
+      type: 'CHANGE_OWNED_FOODS',
+      payload: { food: 'kibble', amount: 5 }
+    });
+};
+
+export const gameLoop = (dispatch, stateRef, appStateRef) => {
   const interval = setInterval(() => {
+    const { isAwake, isPlaying, stats, sprite } = stateRef.current;
+    const { happiness } = stats;
+
+    const { mobileNavOpen, settingsOpen } = appStateRef.current;
+
+    // LOOP PAUSED WHEN SLEEPING, PLAYING OR A MENU IS OPEN
+    if (!isAwake || isPlaying || mobileNavOpen || settingsOpen) return;
+
+    // CHECK IF STATS 0
+    const gameOver = Object.values(stats).every((stat) => stat === 0);
+    if (gameOver) {
+      dispatch({ type: 'SET_GAME_OVER', payload: true });
+      clearInterval(interval);
+      return;
+    }
+
     // CONSTANT STATS DECAY
     dispatch({
       type: 'CHANGE_STATS',
@@ -44,6 +71,10 @@ export const gameLoop = (dispatch, state, appState) => {
 
   return () => clearInterval(interval);
 };
+
+//
+//
+// GAME BUTTON ACTIONS
 
 export const feed = (dispatch, food, prevSprite) => {
   // STATS FOR EACH FOODS ARE PREDEFINED
@@ -97,4 +128,30 @@ export const play = (dispatch) => {
 
     dispatch({ type: 'SET_IS_PLAYING', payload: false });
   }, 2500);
+};
+
+//
+//
+// STORE ACTIONS
+
+export const select = (dispatch, type, name) => {
+  const dType =
+    type === 'skin' ? 'PET_SKIN' : type === 'background' && 'BACKGROUND';
+
+  dispatch({ type: `SET_${dType}`, payload: name });
+};
+
+export const buy = (dispatch, type, name, price) => {
+  if (type === 'food')
+    dispatch({
+      type: 'CHANGE_OWNED_FOODS',
+      payload: { food: name, amount: 1 }
+    });
+  else {
+    const dType =
+      type === 'skin' ? 'SKIN' : type === 'background' && 'BACKGROUND';
+    dispatch({ type: `ADD_OWNED_${dType}`, payload: name });
+  }
+
+  dispatch({ type: 'CHANGE_COINS', payload: -price });
 };

@@ -32,7 +32,7 @@ const StartButtons = () => {
 
       {petName && (
         <>
-          <ResetModal ref={modalRef} />
+          <ResetModal ref={modalRef} option='standard' />
           {/* CONTINUE GAME BUTTON */}
           <button
             onClick={handleContinueButtonClick}

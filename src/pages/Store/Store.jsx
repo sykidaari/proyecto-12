@@ -1,34 +1,21 @@
-import backgrounds from '@/data/backgrounds.js';
-import foods from '@/data/foods.js';
-import petSkins from '@/data/petSkins.js';
-import useText from '@/hooks/useText.js';
-import StoreSection from '@c/game/StoreSection/StoreSection.jsx';
+import CoinsBadge from '@c/game/CoinsBadge/CoinsBadge.jsx';
+import GameNotStartedModal from '@c/game/store/GameNotStartedModal/GameNotStartedModal.jsx';
+import BackgroundsSection from '@c/game/store/sections/BackgroundsSection/BackgroundsSection.jsx';
+import FoodSection from '@c/game/store/sections/FoodSection/FoodSection.jsx';
+import SkinsSection from '@c/game/store/sections/SkinsSection/SkinsSection.jsx';
 
 const Store = () => {
-  const t = useText('game.store');
-
-  const {
-    food: { title: foodTitle },
-    skins: { title: skinsTitle },
-    backgrounds: { title: backgroundsTitle }
-  } = t;
-
   return (
-    <div className='h-full overflow-y-auto p-5 pb-10'>
-      {' '}
-      <StoreSection title={foodTitle} items={foods} src={'/foods/ITEM.svg'} />
+    <div className='h-full w-full overflow-y-auto px-5 pb-10 pt-20'>
+      <CoinsBadge className='fixed right-5 top-20 badge-warning ' />
+
+      <FoodSection />
       <div className='divider' />
-      <StoreSection
-        title={skinsTitle}
-        items={petSkins}
-        src={'/petSprites/ITEM/neutral.webp'}
-      />
+      <SkinsSection />
       <div className='divider' />
-      <StoreSection
-        title={backgroundsTitle}
-        items={backgrounds}
-        src={'/petRooms/ITEM.webp'}
-      />
+      <BackgroundsSection />
+
+      <GameNotStartedModal />
     </div>
   );
 };

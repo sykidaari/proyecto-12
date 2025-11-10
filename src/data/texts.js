@@ -24,9 +24,16 @@ const TEXTS = {
     game: {
       namePet: { title: 'Name your pet:', submit: 'Confirm' },
       resetModal: {
-        title: ['Say goodbye to', 'and start a new game?'],
-        yes: 'Yes',
-        no: 'No'
+        standard: {
+          title: ['Say goodbye to', 'and start a new game?'],
+          yes: 'Yes',
+          no: 'No'
+        },
+        gameOver: {
+          title: ['Your pet', 'is unhappy. Say goodbye and start a new game?'],
+          yes: 'Yes',
+          no: 'No, please stay!'
+        }
       },
       stats: {
         hunger: 'Hunger',
@@ -36,14 +43,68 @@ const TEXTS = {
       },
       actions: {
         feed: { title: 'Feed', noneLeft: "There's no food left!" },
-        play: 'Play',
+        play: { title: 'Play', tooHungry: 'Too hungry to play!' },
         sleep: 'Sleep',
         wakeUp: 'Wake Up'
       },
       store: {
         food: { title: 'Food' },
         skins: { title: 'Appereances' },
-        backgrounds: { title: 'Wallpapers' }
+        backgrounds: { title: 'Wallpapers' },
+
+        owned: 'Inventory',
+        buy: 'Buy',
+        tooExpensive: "You don't have enough coins to buy this!",
+        select: 'Select',
+        inUse: 'Selected',
+
+        gameNotStarted: {
+          title: 'Please start a new game before shopping!',
+          homeButton: 'Go to homepage'
+        }
+      },
+      guide: {
+        title: 'Game Guide',
+        sections: [
+          {
+            title: 'Goal',
+            content: [
+              'Keep your pet healthy, happy, and stylish!',
+              "Earn coins by taking good care of it, then use them to personalize your pet's appearance and surroundings."
+            ]
+          },
+          {
+            title: 'Gameplay',
+            list: [
+              'Feed: Restores hunger and can also increase fun, depending on the food.',
+              'Play: Raises fun but drains energy.',
+              'Sleep: Restores energy and pauses stat decay.',
+              "Happiness: Reflects your pet's overall condition — keep hunger, fun, and energy balanced to maintain high happiness."
+            ],
+            outro:
+              'Keeping your pet happy over time earns you coins as a reward!'
+          },
+          {
+            title: 'Coins & Store',
+            list: [
+              'Restock food',
+              'Buy new appearances',
+              'Unlock wallpapers',
+              "Every time you visit the store, new bargains and sales appear — so you'll always find different items at discounted prices. Check back often to grab the best deals!"
+            ]
+          },
+          {
+            title: 'Pausing the Game',
+            intro: 'You can pause the game anytime by:',
+            list: [
+              'Putting your pet to sleep',
+              'Opening the Settings drawer',
+              '(On mobile) Opening the Navigation drawer',
+              'Visiting any page other than “My Pet”'
+            ],
+            outro: "While paused, your pet's stats will stay frozen."
+          }
+        ]
       }
     }
   },

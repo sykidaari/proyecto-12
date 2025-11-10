@@ -1,5 +1,6 @@
 export const INITIAL_GAME_STATE = {
   petName: '',
+  gameOver: false,
 
   petSkin: 'Tamagotchi_iD_L',
   background: 8,
@@ -10,17 +11,17 @@ export const INITIAL_GAME_STATE = {
 
   sprite: 'neutral',
 
-  coins: 10,
+  coins: 0,
 
   isAwake: true,
   isPlaying: false,
 
   stats: {
-    hunger: 50,
-    sleep: 50,
-    fun: 50,
+    hunger: 0,
+    sleep: 0,
+    fun: 0,
 
-    happiness: 50
+    happiness: 0
   }
 };
 
@@ -33,6 +34,10 @@ const gameReducer = (state, action) => {
     }
     case 'SET_PET_NAME': {
       return { ...state, petName: payload.trim().toUpperCase() };
+    }
+
+    case 'SET_GAME_OVER': {
+      return { ...state, gameOver: payload };
     }
 
     case 'SET_PET_SKIN': {
@@ -55,7 +60,7 @@ const gameReducer = (state, action) => {
     }
 
     case 'CHANGE_OWNED_FOODS': {
-      const { food, amount } = action.payload;
+      const { food, amount } = payload;
 
       return {
         ...state,

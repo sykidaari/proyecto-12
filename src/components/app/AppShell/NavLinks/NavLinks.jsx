@@ -31,9 +31,16 @@ const NavLinks = ({ className }) => {
 
       {Object.entries(t).map(([key, value]) => {
         const isPet = petName && key === petRoute;
+        const isStore = key === 'store';
 
         return (
-          <li key={key} className={cN(settingsOpen && 'menu-disabled')}>
+          <li
+            key={key}
+            className={cN(
+              settingsOpen && 'menu-disabled',
+              !petName && isStore && 'menu-disabled'
+            )}
+          >
             <NavLink
               to={key}
               className={({ isActive }) => cN(isActive && 'menu-active')}

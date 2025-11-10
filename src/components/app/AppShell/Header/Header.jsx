@@ -3,14 +3,23 @@ import { Bars3Icon, Cog6ToothIcon } from '@heroicons/react/24/solid';
 import NavLinks from '@c/app/AppShell/NavLinks/NavLinks';
 import cN from '@/utils/classNameManager';
 import useAppContext from '@/hooks/useAppContext';
+import { useLocation } from 'react-router-dom';
 
 const Header = () => {
   const { state } = useAppContext();
+  const { pathname } = useLocation();
+
+  const fixedPosition = ['/store', '/guide'].includes(pathname);
 
   const { mobileNavOpen, settingsOpen } = state;
 
   return (
-    <header className='bg-primary relative z-80 w-dvw shadow-sm text-primary-content'>
+    <header
+      className={cN(
+        'bg-primary relative z-80 w-dvw shadow-sm text-primary-content',
+        fixedPosition && 'fixed'
+      )}
+    >
       <nav className='navbar sm:px-5'>
         <label
           htmlFor='mobile-nav-drawer'

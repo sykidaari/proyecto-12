@@ -10,25 +10,24 @@ const Feed = ({ buttonClassName }) => {
     state: { ownedFoods, sprite, isAwake, isPlaying },
     dispatch
   } = useGameContext();
+
   const ref = useRef(null);
 
   useEffect(() => {
-    const handleClick = () => {
-      ref.current.open = false;
+    const handleClickOutside = (e) => {
+      if (!ref.current.contains(e.target)) ref.current.open = false;
     };
-
-    window.addEventListener('click', handleClick);
-    return () => window.removeEventListener('click', handleClick);
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
   const { title, noneLeft } = t;
+  const noFoodLeft = Object.values(ownedFoods).every((n) => n === 0);
 
-  const handleClick = (food) => {
+  const handleSelectFood = (food) => {
     feed(dispatch, food, sprite);
     ref.current.open = false;
   };
-
-  const noFoodLeft = Object.values(ownedFoods).every((amount) => amount === 0);
 
   return (
     <li>
@@ -41,23 +40,25 @@ const Feed = ({ buttonClassName }) => {
         >
           {title}
         </summary>
-        <ul className='menu dropdown-content bg-secondary/50 backdrop-blur-xs rounded-box shadow-sm w-20 !z-1 relative bottom-10 left-1/2 -translate-x-1/2'>
+
+        <ul className='menu dropdown-content bg-secondary/50 backdrop-blur-xs rounded-box shadow-sm w-20 z-1 absolute bottom-10 left-1/2 -translate-x-1/2'>
           {noFoodLeft ? (
             <li>{noneLeft}</li>
           ) : (
-            Object.entries(ownedFoods).map(([food, amount]) =>
-              amount > 0 ? (
-                <li key={food} onClick={() => handleClick(food)}>
-                  <div className='pl-0'>
-                    <img
-                      src={`/foods/${food}.svg`}
-                      alt='food-item'
-                      className='w-8'
-                    />
-                    {amount}
-                  </div>
-                </li>
-              ) : null
+            Object.entries(ownedFoods).map(
+              ([food, amount]) =>
+                amount > 0 && (
+                  <li key={food} onClick={() => handleSelectFood(food)}>
+                    <div className='pl-0'>
+                      <img
+                        src={`/foods/${food}.svg`}
+                        alt='food-item'
+                        className='w-8'
+                      />
+                      {amount}
+                    </div>
+                  </li>
+                )
             )
           )}
         </ul>

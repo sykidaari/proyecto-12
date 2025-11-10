@@ -5,11 +5,20 @@
   themes: light --default, dark --prefersdark;
 }
 
+@plugin "tailwind-scrollbar";
+
 @theme {
   /* Remove Tailwind palette, as using DaisyUI palette */
   --color-*: initial;
 }
 
-.app-pet-name {
-  @apply font-semibold capitalize;
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
