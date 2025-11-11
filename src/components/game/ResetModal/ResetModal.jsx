@@ -5,7 +5,7 @@ import { resetGame, revive } from '@/reducers/game/actions.js';
 import StyledPetName from '@c/game/StyledPetName/StyledPetName.jsx';
 
 // REACT 19 ACEPTA REF DENTRO DE LOS PROPS
-const ResetModal = ({ ref, option, revival }) => {
+const ResetModal = ({ ref, option, revivalOption }) => {
   const { title, yes, no } = useText(`game.resetModal.${option}`);
   const { state, dispatch } = useGameContext();
   const navigateToPet = usePetNavigate();
@@ -17,7 +17,7 @@ const ResetModal = ({ ref, option, revival }) => {
   const handleNoClick = () => {
     ref.current?.close();
 
-    if (revival) revive(dispatch, state);
+    if (revivalOption) revive(dispatch, state);
   };
 
   return (
