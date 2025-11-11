@@ -14,7 +14,7 @@ const Settings = () => {
   const { title, options } = useText('app.settings');
 
   return (
-    <section className='min-h-full bg-base-300 pt-25 px-5 w-60 max-w-full text-center'>
+    <section className='min-h-full bg-base-300 pt-25 pb-10 px-5 w-60 max-w-full text-center'>
       <h3 className='text-sm font-semibold'>{title}</h3>
       <div className='divider' />
       <ul>

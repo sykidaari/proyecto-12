@@ -46,7 +46,7 @@ const GameSession = () => {
         <Actions />
       </div>
 
-      <ResetModal ref={modalRef} option='gameOver' revival></ResetModal>
+      <ResetModal ref={modalRef} option='gameOver' revivalOption></ResetModal>
     </section>
   );
 };
