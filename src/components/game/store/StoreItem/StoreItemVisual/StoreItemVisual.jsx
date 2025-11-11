@@ -2,17 +2,17 @@ import useStoreItemContext from '@/hooks/useStoreItemContext.js';
 import cN from '@/utils/classNameManager.js';
 
 const StoreItemVisual = () => {
-  const { name, src, alt } = useStoreItemContext();
+  const { name, src, altSrc } = useStoreItemContext();
 
   return (
     <>
       <img
         src={src.replace('ITEM', name)}
-        className={cN(alt && 'group-hover:hidden')}
+        className={cN(altSrc && 'group-hover:hidden')}
       />
-      {alt && (
+      {altSrc && (
         <img
-          src={alt.replace('ITEM', name)}
+          src={altSrc.replace('ITEM', name)}
           className='hidden scale-115 group-hover:block'
         />
       )}
