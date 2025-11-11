@@ -13,7 +13,7 @@ const TEXTS = {
           theme: 'Theme',
           save: {
             title: 'Save options',
-            text: 'Save between browser-sessions?'
+            text: 'Save game between browser-sessions?'
           }
         }
       },
@@ -130,7 +130,7 @@ const TEXTS = {
           theme: 'Tema',
           save: {
             title: 'Opciones de guardado',
-            text: '¿Guardar entre sesiones del navegador?'
+            text: '¿Guardar partida entre sesiones del navegador?'
           }
         }
       },
@@ -245,7 +245,7 @@ const TEXTS = {
           theme: 'Teema',
           save: {
             title: 'Tallennusasetukset',
-            text: 'Tallennetaanko selainistuntojen välillä?'
+            text: 'Tallennetaanko peli selainistuntojen välillä?'
           }
         }
       },
@@ -361,7 +361,7 @@ const TEXTS = {
           theme: 'Tema',
           save: {
             title: 'Spara-alternativ',
-            text: 'Spara mellan webbläsarsessioner?'
+            text: 'Spara spelet mellan webbläsarsessioner?'
           }
         }
       },
