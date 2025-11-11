@@ -26,7 +26,7 @@ const ResetModal = ({ ref, option, revival }) => {
         <h4 className='text-center'>
           {title[0]} {<StyledPetName />} {title[1]}
         </h4>
-        <div className='modal-action justify-center'>
+        <div className='modal-action justify-center flex flex-wrap'>
           {' '}
           <button className='btn btn-success' onClick={handleYesClick}>
             {yes}

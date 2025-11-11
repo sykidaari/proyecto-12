@@ -11,7 +11,7 @@ const StoreItem = () => {
     <li
       className={cN(
         'carousel-item card card-xs m-2.5 p-2.5 bg-base-200 shadow hover:scale-105 transition z-auto',
-        '[&_img]:size-30 [&_img]:object-contain [&_img]:object-center [&_img]:rounded-box',
+        '[&_img]:size-30 max-[200px]:[&_img]:size-20 [&_img]:object-contain [&_img]:object-center [&_img]:rounded-box',
         'group',
         isOwned && 'bg-base-200/50'
       )}

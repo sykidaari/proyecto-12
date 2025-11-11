@@ -6,8 +6,8 @@ import SkinsSection from '@c/game/store/sections/SkinsSection/SkinsSection.jsx';
 
 const Store = () => {
   return (
-    <div className='h-full w-full overflow-y-auto px-5 pb-10 pt-20'>
-      <CoinsBadge className='fixed right-5 top-20 badge-warning ' />
+    <div className='h-full w-full overflow-y-auto px-5 pb-10 pt-20 max-[200px]:px-2.5'>
+      <CoinsBadge className='fixed right-5 top-20 badge-warning  max-[200px]:right-2.5' />
 
       <FoodSection />
       <div className='divider' />
