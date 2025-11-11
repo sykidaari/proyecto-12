@@ -8,29 +8,36 @@ import Alert from '@c/game/Alert/Alert.jsx';
 import { CircleStackIcon } from '@heroicons/react/24/solid';
 
 const StoreItemButton = () => {
-  const { type, name, isCheap, price, owned } = useStoreItemContext();
-
   const {
-    state: { coins, petSkin, background },
+    buy: buyText,
+    select: selectText,
+    inUse: inUse,
+    tooExpensive
+  } = useText('game.store');
+  const {
+    type,
+    name,
+    isCheap,
+    price,
+    price: isForSale,
+    owned: isOwned
+  } = useStoreItemContext();
+  const {
+    state: { coins, petSkin: currentPetSkin, background: currentBackground },
     dispatch
   } = useGameContext();
+
+  console.log(isForSale);
+
   const { alert, setAlert } = useAlert();
 
-  const t = useText('game.store');
-  const {
-    buy: buyT,
-    select: selectT,
-    inUse: inUseT,
-    tooExpensive: tooExpensiveT
-  } = t;
+  const isInUse = name === currentPetSkin || name === currentBackground;
 
-  const inUse = name === petSkin || name === background;
-
-  const tooExpensive = price > coins;
+  const isTooExpensive = price > coins;
 
   const handleClick = () => {
-    if (owned) select(dispatch, type, name);
-    else if (tooExpensive) setAlert(true);
+    if (isOwned) select(dispatch, type, name);
+    else if (isTooExpensive) setAlert(true);
     else buy(dispatch, type, name, price);
   };
 
@@ -41,20 +48,22 @@ const StoreItemButton = () => {
         className={cN(
           'btn btn-block btn-accent group/button',
           isCheap && 'btn-info',
-          tooExpensive && 'btn-error!',
-          owned && 'btn-secondary',
-          inUse && 'btn-disabled'
+          isTooExpensive && 'btn-error!',
+          isOwned && 'btn-secondary',
+          isInUse && 'btn-disabled'
         )}
       >
-        {price && (
+        {isForSale && (
           <CircleStackIcon className='size-2.5 group-hover/button:hidden' />
         )}
 
-        <span className={cN(price && 'group-hover/button:hidden')}>
-          {price || (inUse && inUseT) || selectT}
+        {/* FOR ALL ITEMS; BUT CLASSNAME IS FOR TEXT ALTERNATION ON BUYABLE ITEMS */}
+        <span className={cN(isForSale && 'group-hover/button:hidden')}>
+          {price || (isInUse && inUse) || selectText}
         </span>
-        <span className={cN('hidden', price && 'group-hover/button:block')}>
-          {buyT}
+        {/* TEXT ALTERNATION FOR ITEMS YOU CAN BUY */}
+        <span className={cN('hidden', isForSale && 'group-hover/button:block')}>
+          {buyText}
         </span>
       </button>
 
@@ -63,7 +72,7 @@ const StoreItemButton = () => {
           className='alert-error alert-soft alert-vertical w-full text-balance absolute z-100 -top-1.5 left-1/2 -translate-x-1/2 group-hover:!none'
           x
         >
-          {tooExpensiveT}
+          {tooExpensive}
         </Alert>
       )}
     </>

@@ -3,12 +3,10 @@ import useText from '@/hooks/useText.js';
 import { Link } from 'react-router-dom';
 
 const GameNotStartedModal = () => {
+  const { title, homeButton } = useText('game.store.gameNotStarted');
   const {
     state: { petName }
   } = useGameContext();
-  const t = useText('game.store.gameNotStarted');
-
-  const { title, homeButton } = t;
 
   return (
     <>

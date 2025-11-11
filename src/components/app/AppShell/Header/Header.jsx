@@ -6,18 +6,18 @@ import useAppContext from '@/hooks/useAppContext';
 import { useLocation } from 'react-router-dom';
 
 const Header = () => {
-  const { state } = useAppContext();
+  const {
+    state: { mobileNavIsOpen, settingsIsOpen }
+  } = useAppContext();
   const { pathname } = useLocation();
 
-  const fixedPosition = ['/store', '/guide'].includes(pathname);
-
-  const { mobileNavOpen, settingsOpen } = state;
+  const hasFixedPosition = ['/store', '/guide'].includes(pathname);
 
   return (
     <header
       className={cN(
         'bg-primary relative z-80 w-dvw shadow-sm text-primary-content',
-        fixedPosition && 'fixed'
+        hasFixedPosition && 'fixed'
       )}
     >
       <nav className='navbar sm:px-5'>
@@ -26,8 +26,8 @@ const Header = () => {
           aria-label='open sidebar'
           className={cN(
             'btn btn-ghost btn-circle btn-primary sm:hidden mr-2.5',
-            mobileNavOpen && 'btn-active',
-            settingsOpen && 'btn-disabled'
+            mobileNavIsOpen && 'btn-active',
+            settingsIsOpen && 'btn-disabled'
           )}
         >
           <Bars3Icon className='size-6' />
@@ -47,8 +47,8 @@ const Header = () => {
             aria-label='open sidebar'
             className={cN(
               'btn btn-ghost btn-circle btn-secondary btn-square',
-              mobileNavOpen && 'btn-disabled',
-              settingsOpen && 'btn-active'
+              mobileNavIsOpen && 'btn-disabled',
+              settingsIsOpen && 'btn-active'
             )}
           >
             <Cog6ToothIcon className='size-5' />

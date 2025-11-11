@@ -5,14 +5,12 @@ import cN from '@/utils/classNameManager.js';
 import { memo, useRef } from 'react';
 
 const Sleep = ({ buttonClassName }) => {
-  const t = useText('game.actions');
+  const { sleep: sleepText, wakeUp: wakeUpText } = useText('game.actions');
   const {
     state: { isAwake, isPlaying },
     dispatch
   } = useGameContext();
   const intervalRef = useRef(null);
-
-  const { sleep: sleepText, wakeUp: wakeUpText } = t;
 
   const handleClick = () => {
     if (isAwake) {

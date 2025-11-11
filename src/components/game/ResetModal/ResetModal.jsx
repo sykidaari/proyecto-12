@@ -6,11 +6,9 @@ import StyledPetName from '@c/game/StyledPetName/StyledPetName.jsx';
 
 // REACT 19 ACEPTA REF DENTRO DE LOS PROPS
 const ResetModal = ({ ref, option, revival }) => {
-  const t = useText(`game.resetModal.${option}`);
+  const { title, yes, no } = useText(`game.resetModal.${option}`);
   const { state, dispatch } = useGameContext();
   const navigateToPet = usePetNavigate();
-
-  const { title, yes, no } = t;
 
   const handleYesClick = () => {
     resetGame(dispatch);

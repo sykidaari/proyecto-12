@@ -1,10 +1,10 @@
 export const INITIAL_APP_STATE = {
-  mobileNavOpen: false,
-  settingsOpen: false,
+  mobileNavIsOpen: false,
+  settingsIsOpen: false,
 
-  theme: localStorage.getItem('theme') || 'light',
-  language: localStorage.getItem('language') || 'en',
-  save: localStorage.getItem('save') || 'yes'
+  theme: 'light',
+  language: 'en',
+  save: 'yes'
 };
 
 const appReducer = (state, action) => {
@@ -12,11 +12,11 @@ const appReducer = (state, action) => {
 
   switch (type) {
     case 'SET_MOBILE_NAV_OPEN': {
-      return { ...state, mobileNavOpen: payload };
+      return { ...state, mobileNavIsOpen: payload };
     }
 
     case 'SET_SETTINGS_OPEN': {
-      return { ...state, settingsOpen: payload };
+      return { ...state, settingsIsOpen: payload };
     }
 
     case 'SET_THEME': {

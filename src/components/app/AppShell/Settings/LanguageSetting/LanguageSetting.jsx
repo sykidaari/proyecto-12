@@ -5,8 +5,7 @@ import useAppContext from '@/hooks/useAppContext';
 import { setLanguage } from '@/reducers/app/actions';
 
 const LanguageSetting = () => {
-  const t = useText('app.settings.options.language');
-  const { title, text } = t;
+  const { title, text } = useText('app.settings.options.language');
 
   const {
     state: { language: currentLanguage },
@@ -26,18 +25,19 @@ const LanguageSetting = () => {
         <option disabled>{text}</option>
 
         {Object.entries(allLanguages).map(([code, languageData]) => {
-          const name = languageData.app.settings.options.language.ownName;
+          const languageName =
+            languageData.app.settings.options.language.ownName;
 
-          const disabled = code === currentLanguage ? true : false;
+          const isDisabled = code === currentLanguage ? true : false;
 
           return (
             <option
               key={code}
               value={code}
-              disabled={disabled}
-              className={cN(disabled && 'text-accent')}
+              disabled={isDisabled}
+              className={cN(isDisabled && 'text-accent')}
             >
-              {name}
+              {languageName}
             </option>
           );
         })}

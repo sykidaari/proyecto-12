@@ -8,12 +8,12 @@ import StyledPetName from '@c/game/StyledPetName/StyledPetName.jsx';
 import usePetRoute from '@/hooks/usePetRoute.js';
 
 const NavLinks = ({ className }) => {
-  const t = useText('app.nav');
+  const linkNames = useText('app.nav');
   const {
-    state: { petName }
+    state: { petName: gameHasStarted }
   } = useGameContext();
   const {
-    state: { settingsOpen },
+    state: { settingsIsOpen },
     dispatch
   } = useAppContext();
   const petRoute = usePetRoute();
@@ -29,16 +29,16 @@ const NavLinks = ({ className }) => {
         <h1>ReactGotchi</h1>
       </li>
 
-      {Object.entries(t).map(([key, value]) => {
-        const isPet = petName && key === petRoute;
+      {Object.entries(linkNames).map(([key, value]) => {
+        const isPet = gameHasStarted && key === petRoute;
         const isStore = key === 'store';
 
         return (
           <li
             key={key}
             className={cN(
-              settingsOpen && 'menu-disabled',
-              !petName && isStore && 'menu-disabled'
+              settingsIsOpen && 'menu-disabled',
+              !gameHasStarted && isStore && 'menu-disabled'
             )}
           >
             <NavLink

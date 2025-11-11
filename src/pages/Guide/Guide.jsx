@@ -1,13 +1,12 @@
 import useText from '@/hooks/useText.js';
 
 const Guide = () => {
-  const t = useText('game.guide');
-
-  const { title, sections } = t;
+  const { title, sections } = useText('game.guide');
 
   return (
     <section className='mt-30 mb-10 card card-body self-start max-w-2xl bg-base-100 card-border shadow'>
       <h2 className='card-title mb-2.5 ml-2.5'>{title}</h2>
+
       {sections.map((section, i) => {
         const { title, intro, content, list, outro } = section;
         return (
@@ -16,7 +15,9 @@ const Guide = () => {
             className='collapse collapse-arrow bg-base-200 border border-base-300'
           >
             <input type='checkbox' />
+
             <h3 className='collapse-title font-semibold'>{title}</h3>
+
             <div className='collapse-content'>
               {' '}
               {intro && <p className='font-semibold text-accent'>{intro}</p>}

@@ -5,7 +5,7 @@ import cN from '@/utils/classNameManager.js';
 import React, { memo, useEffect, useRef } from 'react';
 
 const Feed = ({ buttonClassName }) => {
-  const t = useText('game.actions.feed');
+  const { title, noneLeft } = useText('game.actions.feed');
   const {
     state: { ownedFoods, sprite, isAwake, isPlaying },
     dispatch
@@ -21,8 +21,7 @@ const Feed = ({ buttonClassName }) => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
-  const { title, noneLeft } = t;
-  const noFoodLeft = Object.values(ownedFoods).every((n) => n === 0);
+  const hasNoFoodLeft = Object.values(ownedFoods).every((n) => n === 0);
 
   const handleSelectFood = (food) => {
     feed(dispatch, food, sprite);
@@ -42,7 +41,7 @@ const Feed = ({ buttonClassName }) => {
         </summary>
 
         <ul className='menu dropdown-content bg-secondary/50 backdrop-blur-xs rounded-box shadow-sm w-20 z-1 absolute bottom-10 left-1/2 -translate-x-1/2'>
-          {noFoodLeft ? (
+          {hasNoFoodLeft ? (
             <li>{noneLeft}</li>
           ) : (
             Object.entries(ownedFoods).map(

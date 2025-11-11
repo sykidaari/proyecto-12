@@ -1,7 +1,7 @@
 import cN from '@/utils/classNameManager.js';
 import { XCircleIcon } from '@heroicons/react/24/solid';
 
-// * THIS COMPONENT IS MEANT TO BE USED WITH THE HOOK: useAlert
+// * THIS COMPONENTS VISIBILITY IS MANAGED WITH THE HOOK: useAlert
 
 // useAlert shows and removes alert, if want permanent alert, don't use
 

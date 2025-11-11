@@ -49,13 +49,16 @@ const gameReducer = (state, action) => {
     }
 
     case 'ADD_OWNED_SKIN': {
-      return { ...state, ownedSkins: [...state.ownedSkins, payload] };
+      return {
+        ...state,
+        ownedSkins: [...new Set([...state.ownedSkins, payload])]
+      };
     }
 
     case 'ADD_OWNED_BACKGROUND': {
       return {
         ...state,
-        ownedBackgrounds: [...state.ownedBackgrounds, payload]
+        ownedBackgrounds: [...new Set([...state.ownedBackgrounds, payload])]
       };
     }
 

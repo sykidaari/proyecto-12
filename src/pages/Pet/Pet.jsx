@@ -4,10 +4,10 @@ import NamePetForm from '@c/game/NamePetForm/NamePetForm.jsx';
 
 const Pet = () => {
   const {
-    state: { petName }
+    state: { petName: gameHasStarted }
   } = useGameContext();
 
-  return <>{petName ? <GameSession /> : <NamePetForm />}</>;
+  return <>{gameHasStarted ? <GameSession /> : <NamePetForm />}</>;
 };
 
 export default Pet;

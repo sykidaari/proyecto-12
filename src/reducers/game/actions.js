@@ -26,10 +26,10 @@ export const gameLoop = (dispatch, stateRef, appStateRef) => {
     const { isAwake, isPlaying, stats, sprite } = stateRef.current;
     const { happiness } = stats;
 
-    const { mobileNavOpen, settingsOpen } = appStateRef.current;
+    const { mobileNavIsOpen, settingsIsOpen } = appStateRef.current;
 
     // LOOP PAUSED WHEN SLEEPING, PLAYING OR A MENU IS OPEN
-    if (!isAwake || isPlaying || mobileNavOpen || settingsOpen) return;
+    if (!isAwake || isPlaying || mobileNavIsOpen || settingsIsOpen) return;
 
     // CHECK IF STATS 0
     const gameOver = Object.values(stats).every((stat) => stat === 0);
@@ -57,8 +57,8 @@ export const gameLoop = (dispatch, stateRef, appStateRef) => {
         ? 'sad'
         : 'angry';
 
-    // IF ANY STAT IS 10 OR LESS, SRITE IS SHOCKED
-    if (Object.values(stats).some((stat) => stat <= 10)) newSprite = 'shocked';
+    // IF ANY STAT IS 5 OR LESS, SRITE IS SHOCKED
+    if (Object.values(stats).some((stat) => stat <= 5)) newSprite = 'shocked';
 
     // SPRITE IS ONLY UPDATED IN INTERVAL WHEN NECESSARY
     if (newSprite !== sprite)

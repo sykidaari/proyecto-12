@@ -3,11 +3,8 @@ import useText from '@/hooks/useText.js';
 import { useRef } from 'react';
 
 const NamePetForm = () => {
-  const t = useText('game.namePet');
-
+  const { title, submit } = useText('game.namePet');
   const { dispatch } = useGameContext();
-
-  const { title, submit } = t;
 
   const ref = useRef(null);
 

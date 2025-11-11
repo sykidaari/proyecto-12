@@ -4,41 +4,53 @@ import cN from '@/utils/classNameManager.js';
 import StoreItem from '@c/game/store/StoreItem/StoreItem.jsx';
 import { useMemo, useState } from 'react';
 
-const StoreList = ({ type, items, src, owned, prices }) => {
-  const t = useText('game.store.owned');
+const StoreList = ({
+  // double desrtructures when 2 different uses, for clarity
+  type,
+  items,
+  src,
+  owned,
+  owned: itemsAreOwned,
+  prices,
+  prices: itemsAreForSale
+}) => {
+  const ownedText = useText('game.store.owned');
 
   // handle objects differently from arrays
   if (!Array.isArray(items)) items = Object.entries(items);
 
-  const { list, fixed } = prices ?? {};
-  const [low, high] = list ?? [];
+  const { list: priceList, fixed: itemsHaveFixedPrices } =
+    itemsAreForSale ?? {};
+  const [low, high] = priceList ?? [];
 
   // src can be string, or object, if object can have 2 variations
-  const { regular, alt } = src ?? {};
+  const { regular, alt: altSrc } = src ?? {};
   src = typeof src === 'string' ? src : regular;
 
   const [cheapItems] = useState(() => {
-    if (!prices || fixed) return [];
+    if (!itemsAreForSale || itemsHaveFixedPrices) return [];
     const shuffled = [...items].sort(() => Math.random() - 0.5);
     return shuffled.slice(0, 2);
   });
 
   const orderedItems = useMemo(() => {
-    if (!prices || fixed) return items;
+    if (!itemsAreForSale || itemsHaveFixedPrices) return items;
 
     const cheap = items.filter((item) => cheapItems.includes(item));
     const rest = items.filter((item) => !cheapItems.includes(item));
     return [...cheap, ...rest];
-  }, [items, prices, fixed, cheapItems]);
+    // eslint-disable-next-line
+  }, [items, prices]);
 
   return (
     <div className='max-w-full'>
-      {owned && <h4 className='menu-title'>{t}</h4>}
+      {/* SUBTITLE FOR OWNED ITEMS */}
+      {itemsAreOwned && <h4 className='menu-title'>{ownedText}</h4>}
 
       <ul
         className={cN(
           'carousel bg-base-300 rounded-box carousel-center w-full',
-          owned && 'bg-secondary/25'
+          itemsAreOwned && 'bg-secondary/25'
         )}
       >
         {orderedItems.map((item, i) => {
@@ -48,12 +60,17 @@ const StoreList = ({ type, items, src, owned, prices }) => {
           const isCheap = cheapItems.includes(item);
 
           // fixed price when specified, otherwise low(cheap) or high(regular)
-          const price = fixed ? list[i] : isCheap ? low : high;
+          const price = itemsHaveFixedPrices
+            ? priceList[i]
+            : isCheap
+            ? low
+            : high;
 
           return (
+            // PROVIDER FOR EACH SEPARATE ITEM, TO AVOID PROP DRILLING
             <StoreItemProvider
               key={i}
-              item={{ type, name, owned, isCheap, src, alt, price }}
+              item={{ type, name, owned, isCheap, src, altSrc, price }}
             >
               <StoreItem />
             </StoreItemProvider>

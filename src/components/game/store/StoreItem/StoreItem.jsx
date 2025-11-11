@@ -5,7 +5,7 @@ import StoreItemButton from '@c/game/store/StoreItem/StoreItemButton.jsx/StoreIt
 import StoreItemVisual from '@c/game/store/StoreItem/StoreItemVisual/StoreItemVisual.jsx';
 
 const StoreItem = () => {
-  const { isCheap, owned } = useStoreItemContext();
+  const { isCheap, owned: isOwned } = useStoreItemContext();
 
   return (
     <li
@@ -13,10 +13,11 @@ const StoreItem = () => {
         'carousel-item card card-xs m-2.5 p-2.5 bg-base-200 shadow hover:scale-105 transition z-auto',
         '[&_img]:size-30 [&_img]:object-contain [&_img]:object-center [&_img]:rounded-box',
         'group',
-        owned && 'bg-base-200/50'
+        isOwned && 'bg-base-200/50'
       )}
     >
       {isCheap && <CheapEffect />}
+
       <div className='size-full relative overflow-visible'>
         <StoreItemVisual />
         <div className='card-body card-actions pt-2.5 px-0'>

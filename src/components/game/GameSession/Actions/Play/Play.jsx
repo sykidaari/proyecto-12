@@ -7,7 +7,7 @@ import Alert from '@c/game/Alert/Alert.jsx';
 import { memo } from 'react';
 
 const Play = ({ buttonClassName }) => {
-  const t = useText('game.actions.play');
+  const { title, tooHungry: tooHungryText } = useText('game.actions.play');
   const {
     state: {
       isAwake,
@@ -16,15 +16,12 @@ const Play = ({ buttonClassName }) => {
     },
     dispatch
   } = useGameContext();
-
   const { alert, setAlert } = useAlert();
 
-  const { title, tooHungry: tooHungryText } = t;
-
-  const tooHungry = hunger <= 2;
+  const isTooHungry = hunger <= 2;
 
   const handleClick = () => {
-    if (tooHungry) return setAlert(true);
+    if (isTooHungry) return setAlert(true);
 
     play(dispatch);
   };

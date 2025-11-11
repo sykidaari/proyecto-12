@@ -10,6 +10,7 @@ const GameProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(gameReducer, INITIAL_GAME_STATE, () => {
     if (save === 'yes') {
+      // GET SAVED GAME
       const saved = localStorage.getItem('gameState');
       if (saved) return JSON.parse(saved);
     }
@@ -18,10 +19,12 @@ const GameProvider = ({ children }) => {
 
   useEffect(() => {
     if (save === 'no') {
+      // REMOVE SAVED GAME
       localStorage.removeItem('gameState');
       return;
     }
 
+    // SAVE GAME
     localStorage.setItem('gameState', JSON.stringify(state));
   }, [state, save]);
 

@@ -6,12 +6,12 @@ import Settings from '@c/app/AppShell/Settings/Settings';
 
 const AppShell = ({ children }) => {
   const {
-    state: { mobileNavOpen, settingsOpen },
+    state: { mobileNavIsOpen, settingsIsOpen },
     dispatch
   } = useAppContext();
 
-  const toggleMobileNav = () => setMobileNavDrawer(dispatch, !mobileNavOpen);
-  const toggleSettings = () => setSettingsDrawer(dispatch, !settingsOpen);
+  const toggleMobileNav = () => setMobileNavDrawer(dispatch, !mobileNavIsOpen);
+  const toggleSettings = () => setSettingsDrawer(dispatch, !settingsIsOpen);
 
   return (
     // LEFT DRAWER: MOBILE MENU
@@ -20,7 +20,7 @@ const AppShell = ({ children }) => {
         id='mobile-nav-drawer'
         type='checkbox'
         className='drawer-toggle'
-        checked={mobileNavOpen}
+        checked={mobileNavIsOpen}
         onChange={toggleMobileNav}
       />
       <div className='drawer-content'>
@@ -30,7 +30,7 @@ const AppShell = ({ children }) => {
             id='settings-drawer'
             type='checkbox'
             className='drawer-toggle'
-            checked={settingsOpen}
+            checked={settingsIsOpen}
             onChange={toggleSettings}
           />
           <div className='drawer-content'>

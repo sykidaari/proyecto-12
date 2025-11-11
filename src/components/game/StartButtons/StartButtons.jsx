@@ -7,32 +7,34 @@ import StyledPetName from '@c/game/StyledPetName/StyledPetName.jsx';
 import { useRef } from 'react';
 
 const StartButtons = () => {
-  const t = useText('app.home');
+  const { startNew, continueCurrent } = useText('app.home');
   const {
-    state: { petName }
+    state: { petName: gameStarted }
   } = useGameContext();
+
   const modalRef = useRef(null);
   const navigateToPet = usePetNavigate();
 
-  const { startNew, continueCurrent } = t;
-
+  // IF THERE'S AN ONGOING GAME, ASK FOR COMFIRMATION ON WHETHER TO DELETE AND START NEW
   const handleStartButtonClick = () =>
-    petName ? modalRef.current?.showModal() : navigateToPet();
+    gameStarted ? modalRef.current?.showModal() : navigateToPet();
+
   const handleContinueButtonClick = () => navigateToPet();
 
   return (
     <div className='card-actions mt-3 justify-center w-full max-w-xs sm:max-w-full  [&>button]:btn-block [&>button]:rounded-full'>
       {/* START GAME BUTTON */}
       <button
-        className={cN('btn', petName ? 'btn-soft' : 'btn-secondary')}
+        className={cN('btn', gameStarted ? 'btn-soft' : 'btn-secondary')}
         onClick={handleStartButtonClick}
       >
         {startNew}
       </button>
 
-      {petName && (
+      {gameStarted && (
         <>
           <ResetModal ref={modalRef} option='standard' />
+
           {/* CONTINUE GAME BUTTON */}
           <button
             onClick={handleContinueButtonClick}

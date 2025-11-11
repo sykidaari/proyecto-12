@@ -4,7 +4,7 @@ import cN from '@/utils/classNameManager.js';
 import { memo } from 'react';
 
 const Stats = () => {
-  const t = useText('game.stats');
+  const statNames = useText('game.stats');
   const {
     state: { stats }
   } = useGameContext();
@@ -19,13 +19,14 @@ const Stats = () => {
             key={key}
             className={cN('text-xs', happinessStat && 'font-semibold mt-5')}
           >
-            {t[key]}{' '}
+            {statNames[key]}{' '}
             <progress
               value={value}
               max='100'
               className={cN(
                 'progress w-full',
 
+                // color depends on value, except for happinnessBar, it's always primary
                 happinessStat
                   ? 'progress-primary'
                   : value < 25

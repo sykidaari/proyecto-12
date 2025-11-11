@@ -13,7 +13,6 @@ const GameSession = () => {
 
   const { state: appState } = useAppContext();
   const { state, dispatch } = useGameContext();
-
   const { gameOver } = state;
 
   const stateRef = useRef(state);
@@ -33,18 +32,16 @@ const GameSession = () => {
 
     const stop = gameLoop(dispatch, stateRef, appStateRef);
     return stop;
-
     // eslint-disable-next-line
   }, [gameOver]);
 
   return (
     <section className='card items-center shadow shadow-accent m-5 max-w-sm h-fit [@media(max-height:750px)]:my-2.5'>
       <PetVisual />
+
       <CoinsBadge className='badge-accent absolute left-5 top-5 @max-sm:left-1.5 @max-sm:top-1.5' />
-      <div
-        className='card-body w-full max-[350px]:p-4 [@media(max-height:650px)]:py-2'
-        data-pet-body-css
-      >
+
+      <div className='card-body w-full max-[350px]:p-4 [@media(max-height:650px)]:py-2'>
         <Stats />
         <Actions />
       </div>

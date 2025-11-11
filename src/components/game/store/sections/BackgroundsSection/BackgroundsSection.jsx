@@ -5,12 +5,10 @@ import StoreList from '@c/game/store/StoreList/StoreList.jsx';
 import StoreSectionBase from '@c/game/store/StoreSectionBase/StoreSectionBase.jsx';
 
 const BackgroundsSection = () => {
-  const t = useText('game.store.backgrounds');
+  const { title } = useText('game.store.backgrounds');
   const {
     state: { ownedBackgrounds }
   } = useGameContext();
-
-  const { title } = t;
 
   const notOwnedBackgrounds = backgrounds.filter(
     (bg) => !ownedBackgrounds.includes(bg)

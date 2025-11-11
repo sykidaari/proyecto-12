@@ -7,20 +7,18 @@ const CoinsBadge = ({ className }) => {
   const {
     state: { coins }
   } = useGameContext();
-  const ref = useRef(null);
 
+  const ref = useRef(null);
   const prevCoins = useRef(coins);
 
   useEffect(() => {
     if (prevCoins.current !== coins) {
       const badge = ref.current;
-
       badge?.classList.add('animate-bounce');
 
       const timer = setTimeout(() => {
         badge.classList.remove('animate-bounce');
       }, 1500);
-
       return () => clearTimeout(timer);
     }
   }, [coins]);

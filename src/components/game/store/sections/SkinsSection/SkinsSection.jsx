@@ -5,12 +5,10 @@ import StoreList from '@c/game/store/StoreList/StoreList.jsx';
 import StoreSectionBase from '@c/game/store/StoreSectionBase/StoreSectionBase.jsx';
 
 const SkinsSection = () => {
-  const t = useText('game.store.skins');
+  const { title } = useText('game.store.skins');
   const {
     state: { ownedSkins }
   } = useGameContext();
-
-  const { title } = t;
 
   const notOwnedSkins = petSkins.filter((skin) => !ownedSkins.includes(skin));
 
