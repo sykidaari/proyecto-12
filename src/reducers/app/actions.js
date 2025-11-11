@@ -6,6 +6,11 @@ export const setAppTheme = (dispatch, value) => {
   dispatch({ type: 'SET_THEME', payload: newTheme });
 };
 
+export const setAppSave = (dispatch, value) => {
+  const newSave = value ? 'yes' : 'no';
+  dispatch({ type: 'SET_SAVE', payload: newSave });
+};
+
 export const setMobileNavDrawer = (dispatch, value) =>
   dispatch({ type: 'SET_MOBILE_NAV_OPEN', payload: value });
 

@@ -2,12 +2,17 @@ import { Fragment } from 'react/jsx-runtime';
 import useText from '@/hooks/useText';
 import LanguageSetting from '@c/app/AppShell/Settings/LanguageSetting/LanguageSetting';
 import ThemeSetting from '@c/app/AppShell/Settings/ThemeSetting/ThemeSetting';
+import SaveSetting from '@c/app/AppShell/Settings/SaveSetting/SaveSetting.jsx';
 
 const Settings = () => {
   const t = useText('app.settings');
   const { title, options } = t;
 
-  const settings = { language: LanguageSetting, theme: ThemeSetting };
+  const settings = {
+    language: LanguageSetting,
+    theme: ThemeSetting,
+    save: SaveSetting
+  };
 
   return (
     <section className='min-h-full bg-base-300 pt-25 px-5 w-60 max-w-full text-center'>

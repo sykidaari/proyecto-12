@@ -6,7 +6,7 @@ const Guide = () => {
   const { title, sections } = t;
 
   return (
-    <section className='mt-20 mb-10 card card-body self-start max-w-2xl bg-base-100 card-border shadow'>
+    <section className='mt-30 mb-10 card card-body self-start max-w-2xl bg-base-100 card-border shadow'>
       <h2 className='card-title mb-2.5 ml-2.5'>{title}</h2>
       {sections.map((section, i) => {
         const { title, intro, content, list, outro } = section;

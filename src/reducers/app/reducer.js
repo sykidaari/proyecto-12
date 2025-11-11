@@ -3,7 +3,8 @@ export const INITIAL_APP_STATE = {
   settingsOpen: false,
 
   theme: localStorage.getItem('theme') || 'light',
-  language: localStorage.getItem('language') || 'en'
+  language: localStorage.getItem('language') || 'en',
+  save: localStorage.getItem('save') || 'yes'
 };
 
 const appReducer = (state, action) => {
@@ -27,6 +28,11 @@ const appReducer = (state, action) => {
     case 'SET_LANGUAGE': {
       localStorage.setItem('language', payload);
       return { ...state, language: payload };
+    }
+
+    case 'SET_SAVE': {
+      localStorage.setItem('save', payload);
+      return { ...state, save: payload };
     }
 
     default:

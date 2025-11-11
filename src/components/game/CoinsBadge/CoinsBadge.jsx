@@ -27,7 +27,9 @@ const CoinsBadge = ({ className }) => {
 
   return (
     <div className='@container w-full'>
-      <div className={cN('badge h-fit p-2 gap-1 z-10 shadow', className)}>
+      <div
+        className={cN('badge h-fit p-2 gap-1 z-10 badge-warning', className)}
+      >
         <CircleStackIcon className='size-7' ref={ref} />
         <span className='text-sm font-bold'>{coins}</span>
       </div>

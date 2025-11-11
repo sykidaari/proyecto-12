@@ -17,11 +17,11 @@ export const INITIAL_GAME_STATE = {
   isPlaying: false,
 
   stats: {
-    hunger: 0,
-    sleep: 0,
-    fun: 0,
+    hunger: 50,
+    sleep: 50,
+    fun: 50,
 
-    happiness: 0
+    happiness: 50
   }
 };
 

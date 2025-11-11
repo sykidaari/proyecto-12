@@ -51,7 +51,7 @@ const StoreItemButton = () => {
         )}
 
         <span className={cN(price && 'group-hover/button:hidden')}>
-          {price || inUseT || selectT}
+          {price || (inUse && inUseT) || selectT}
         </span>
         <span className={cN('hidden', price && 'group-hover/button:block')}>
           {buyT}
